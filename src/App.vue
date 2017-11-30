@@ -11,7 +11,7 @@
                     <input type="checkbox" class="checkbox" v-model="task.checked">
                     <input type="text" v-show="task.edit" v-model="task.edit">
                     <label for="checkbox" v-on:click="editTask(task)">{{ task.title }}</label>
-                    <button class="delete" v-on:click="removeTask(task)">X</button>
+                    <button class="delete" v-on:click="removeTask(task)">delete</button>
                </li>
           </ul>
      </div>
@@ -81,9 +81,34 @@
 </script>
 
 <style lang="scss">
+     ul,
+     li {
+          margin: 0;
+          padding: 0;
+          border: 0;
+     }
+
+     .panel,
+     li {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          list-style-type: none;
+          padding: 10px;
+          border-bottom: 1px solid #efefef;
+          background-color: rgba(103, 81, 150, 0.2);
+          border-radius: 25px;
+     }
+
+
+     body {
+          line-height: 1;
+          background-color: rgba(103, 81, 150, 0.2);       
+     }
+
      .container {
           width: 70%;
-          border: 1px solid #efefef;
+          margin: 1em auto 3em;
      }
 
      button {
@@ -95,6 +120,7 @@
           height: 38px;
           cursor: pointer;
           font-size: 15px;
+          border-radius: 35px;
      }
 
      .text-input {
@@ -117,13 +143,14 @@
           background-color: transparent;
           border: 1px solid #7c99ff;
           color: #0037ff;
-          visibility: hidden;
           font-size: 20px;
-          font-weight: bold;
+          margin-right: 10px;
      }
+
      .list li:hover > .delete {
-          visibility: visible;
+          font-weight: bolder;
      }
+
      .list label {
           padding-right: 10px;
           display: inline-block;
@@ -133,5 +160,20 @@
           color: #192551;
           z-index: 2;
           overflow: hidden;
+     }
+
+     .list label:hover {
+          font-weight: bold;
+          font-size:20px;
+     }
+
+     @media screen and (max-width: 768px) {
+          .container {
+               width: 90%;
+               max-width: 90%;
+          }
+          button {
+               width: 80px;
+          }
      }
 </style>
