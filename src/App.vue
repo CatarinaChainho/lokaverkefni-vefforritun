@@ -7,10 +7,10 @@
                <button v-on:click="clearList">Clear List</button>
           </section>
           <ul class="list">
-               <li v-for="task in taskList" mv-bind:class="{done: task.checked}">
+               <li v-for="task in taskList" v-bind:class="{done: task.checked}">
                     <input type="checkbox" class="checkbox" v-model="task.checked">
                     <input type="text" v-show="task.edit" v-model="task.edit">
-                    <label for="checkbox" v-on:click="editTask(task)">{{ task.title }}</label>
+                    <label for="checkbox">{{ task.title }}</label>
                     <button class="delete" v-on:click="removeTask(task)">delete</button>
                </li>
           </ul>
@@ -98,6 +98,8 @@
           border-bottom: 1px solid #efefef;
           background-color: rgba(103, 81, 150, 0.2);
           border-radius: 25px;
+          font-family: Arial, Helvetica, sans-serif;
+          font-size: 14px;
      }
 
 
@@ -136,7 +138,7 @@
      }     
 
      .list li.done label {
-          color: #d9d9d9;
+          color: #0037ff;
           text-decoration: line-through;
      }
      .list li .delete {
